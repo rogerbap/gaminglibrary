@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1e0Hi9GCZ/4=",
+  "dgSpecHash": "NS+6X2CZBeY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\roger\\Gaminglibrary\\src\\Infrastructure\\GamingLibrary.Infrastructure\\GamingLibrary.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\roger\\GamingLibrary\\src\\Infrastructure\\GamingLibrary.Infrastructure\\GamingLibrary.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roger\\.nuget\\packages\\automapper\\15.0.1\\automapper.15.0.1.nupkg.sha512",
     "C:\\Users\\roger\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
