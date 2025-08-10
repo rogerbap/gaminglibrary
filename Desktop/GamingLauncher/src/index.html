@@ -1,0 +1,172 @@
+<!-- Desktop/GamingLauncher/src/index.html -->
+<!-- Purpose: Main desktop interface with game shortcuts and player dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Library - Portfolio Showcase</title>
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Desktop Background -->
+    <div class="desktop-background">
+        <!-- Animated particles for visual effect -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Top Bar with system info -->
+        <div class="top-bar">
+            <div class="system-info">
+                <span class="time" id="currentTime">12:00 PM</span>
+                <span class="status-indicator" id="apiStatus">
+                    <span class="dot offline"></span>
+                    API Status
+                </span>
+            </div>
+            <div class="player-info" id="playerInfo" style="display: none;">
+                <img src="assets/images/player-avatar.png" alt="Player" class="player-avatar">
+                <div class="player-details">
+                    <span class="player-name" id="playerName">Player</span>
+                    <span class="player-score" id="playerScore">0 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Desktop Area -->
+        <div class="desktop-main">
+            <!-- Game Shortcuts -->
+            <div class="game-shortcuts">
+                <!-- Deploy the Cat Game -->
+                <div class="game-shortcut" data-game="Deploy the Cat">
+                    <div class="game-icon deploy-cat">
+                        <div class="icon-content">
+                            <span class="icon-symbol">🐱</span>
+                            <div class="deployment-pipes"></div>
+                        </div>
+                    </div>
+                    <span class="game-title">Deploy the Cat</span>
+                    <span class="game-subtitle">DevOps Challenge</span>
+                </div>
+
+                <!-- Git Blaster Game -->
+                <div class="game-shortcut" data-game="Git Blaster">
+                    <div class="game-icon git-blaster">
+                        <div class="icon-content">
+                            <span class="icon-symbol">⚔️</span>
+                            <div class="git-branches"></div>
+                        </div>
+                    </div>
+                    <span class="game-title">Git Blaster</span>
+                    <span class="game-subtitle">Version Control Shooter</span>
+                </div>
+            </div>
+
+            <!-- Central Dashboard -->
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h1>Gaming Library</h1>
+                    <p>Portfolio Showcase Platform</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <!-- Player Stats -->
+                    <div class="stats-panel" id="statsPanel">
+                        <h3>Player Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value" id="totalScore">0</span>
+                                <span class="stat-label">Total Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="gamesPlayed">0</span>
+                                <span class="stat-label">Games Played</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="averageScore">0</span>
+                                <span class="stat-label">Average Score</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-panel">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list" id="activityList">
+                            <div class="activity-item placeholder">
+                                <span class="activity-icon">🎮</span>
+                                <span class="activity-text">Welcome! Start playing to see your activity.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leaderboard -->
+                    <div class="leaderboard-panel">
+                        <h3>Leaderboard</h3>
+                        <div class="leaderboard-list" id="leaderboardList">
+                            <div class="loading">Loading leaderboard...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dock/Taskbar -->
+        <div class="dock">
+            <div class="dock-item active" data-action="home">
+                <span class="dock-icon">🏠</span>
+                <span class="dock-label">Home</span>
+            </div>
+            <div class="dock-item" data-action="settings">
+                <span class="dock-icon">⚙️</span>
+                <span class="dock-label">Settings</span>
+            </div>
+            <div class="dock-item" data-action="about">
+                <span class="dock-icon">ℹ️</span>
+                <span class="dock-label">About</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Creation Modal -->
+    <div class="modal-overlay" id="playerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Welcome to Gaming Library</h2>
+                <p>Create your player profile to get started</p>
+            </div>
+            <div class="modal-body">
+                <form id="playerForm">
+                    <div class="form-group">
+                        <label for="playerNameInput">Player Name</label>
+                        <input type="text" id="playerNameInput" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="playerEmailInput">Email</label>
+                        <input type="email" id="playerEmailInput" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Create Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p id="loadingText">Loading...</p>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notifications"></div>
+
+    <!-- Scripts -->
+    <script src="js/desktop.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
